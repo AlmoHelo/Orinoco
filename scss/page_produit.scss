@@ -1,0 +1,126 @@
+.DivTed {
+    border: 0.5px solid lightgrey;
+    box-shadow: 2px 2px 10px lightgrey;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 95%;
+    margin: 40px 2.5% 40px 2.5%;
+}
+.imgTed {
+    display: flex;
+    > img {
+        width: 50%;
+        border-right: 1px solid lightgray;
+    }
+}
+.figcapTed {
+    display: flex;
+    flex-direction: column;
+    & .titreetprixTed {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px 20px 20px 20px;
+        font-size: 30px;
+    }
+    & .descripTed {
+        margin: 0px 20px 50px 20px;
+        font-size: 22px;
+        height: auto;
+    }
+}
+.listetbuttonTed {
+    margin: 0px 20px 20px 20px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    & .ajoutpanier {
+        margin-left: 0;
+        margin-top: 0;
+        width: 190px;
+        height: 50px;
+        border-radius: 30px;
+        font-size: 20px;
+    }
+    & form{
+        width: 50%;
+        font-size: 22px;
+        font-weight: bold;
+        & select{
+            width: 150px;
+            & option{
+                font-size: 16px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .imgTed {
+        width: 100%;
+        flex-direction: column;
+        > img {
+            border-bottom: 1px solid lightgray;
+            width: 100%;
+        }
+    }
+    .figcapTed {
+        width: 100%;
+        & .titreetprixTed {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        & .descripTed {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+    }
+    .listetbuttonTed {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        & .ajoutpanier {
+            width: 120px;
+            height: 30px;
+            font-size: 12px;
+        }
+        & form{
+            width: 75%;
+            font-size: 15px;
+            margin-bottom: 10px;
+            & select{
+                width: 110px;
+                & option{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .figcapTed {
+        & .titreetprixTed{
+            font-size: 25px;
+        }
+        & .descripTed {
+            font-size: 15px;
+        }
+    }
+    .listetbuttonTed {
+        justify-content: space-between;
+        & .ajoutpanier {
+            width: 130px;
+            height: 30px;
+            font-size: 13px;
+        }
+        & form{
+            font-size: 15px;
+            margin-bottom: 10px;
+            & select{
+                width: 80px;
+                & option{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

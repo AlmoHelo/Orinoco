@@ -1,0 +1,117 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+$color-primary: #B184E6;
+$color-secondary: #FFADE8;
+
+@font-face {
+    font-family: "Nerk";
+    src: url("../polices/NerkoOne-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../polices/Roboto-Medium.ttf") format("truetype");
+}
+*:not(.fa-shopping-basket){
+    font-family: 'Roboto', 'comic sans ms'!important;
+}
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+p,
+a,
+img,
+ul,
+li,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+a {
+    color: black;
+}
+
+
+@import "../scss/page_accueil.scss";
+@import "../scss/page_produit.scss";
+
+/*banniere*/
+.banniere {
+    background-color: #f3e9f1;
+    height: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    > a {
+        font-size: 30px;
+        justify-content: flex-end;
+    }
+}
+.logo {
+    height: 100px;
+}
+.ourson_accueil {
+    width: 100%;
+}
+.accueil_texte {
+    font: {
+        size: 50px;
+        family: 'Nerk', 'arial'!important;
+    }
+    position: absolute;
+    top: 25%;
+    left: 62%;
+}
+/*footer*/
+
+footer{
+    height: 100px;
+    background-color: #FFD1F2;
+    & a {
+        display: flex;
+        justify-content: center;   
+        padding-top: 30px;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: 'Nerk', 'comic sans ms'!important;
+    }
+}
+@media screen and (max-width: 768px) {
+    .banniere {
+        height: 50px;
+        > a {
+            font-size: 15px;
+        }
+    }
+    .logo {
+        height: 40px;
+    }
+    .accueil_texte {
+        font-size: 16px;
+        top: 90px;
+    }
+    footer a{
+        font-size: 30px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .accueil_texte {
+        font-size: 35px;
+        top: 23%;
+        left: 62%;
+    }
+}
