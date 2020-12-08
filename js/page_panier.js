@@ -1,3 +1,46 @@
+//Stockage éléments
+if (typeof localStorage != 'undefined') {
+    if ('nom' in localStorage) {
+        document.getElementById('nom').value = localStorage.getItem('nom');
+    }
+} else {
+    alert("sessionStorage n'est pas supporté");
+}
+if (typeof localStorage != 'undefined') {
+    if ('prenom' in localStorage) {
+        document.getElementById('prenom').value = localStorage.getItem('prenom');
+    }
+} else {
+    alert("sessionStorage n'est pas supporté");
+}
+if(typeof localStorage!='undefined') {
+    if('adressep' in localStorage) {
+      document.getElementById('adressep').value = localStorage.getItem('adressep');
+    }
+  } else {
+    alert("sessionStorage n'est pas supporté");
+  }
+  if(typeof localStorage!='undefined') {
+    if('ville' in localStorage) {
+      document.getElementById('ville').value = localStorage.getItem('ville');
+    }
+  } else {
+    alert("sessionStorage n'est pas supporté");
+  }
+  if(typeof localStorage!='undefined') {
+    if('adressem' in localStorage) {
+      document.getElementById('adressem').value = localStorage.getItem('adressem');
+    }
+  } else {
+    alert("sessionStorage n'est pas supporté");
+  }
+
+console.log(localStorage) //"Données enregistrées"
+
+
+
+//stockage formulaire
+
 /*let nomElt = document.getElementById("nom");
 nomElt.value = "MonNom";*/
 
@@ -14,6 +57,8 @@ req.open("POST", "http://localhost:3000/api/teddies");
 req.send(identite);
 */
 
+
+/*
 let url = "http://localhost:3000/api/teddies";
 function ajaxPost(url, data, callback) {
     var req = new XMLHttpRequest();
@@ -48,7 +93,7 @@ form.addEventListener("submit", function (e) {
     var data = new FormData(form);
     ajaxPost("http://localhost:3000/api/teddies", data, function () {});
 });
-
+*/
 
 /*
 form.addEventListener("submit", function (e) {
@@ -66,3 +111,27 @@ form.addEventListener("submit", function (e) {
     }
     e.preventDefault(); // Annulation de l'envoi des données
 });*/
+
+
+
+/*let url = "http://localhost:3000/api/teddies";
+
+function ajaxPost(url, data, callback, isJson) {
+    var req = new XMLHttpRequest();
+    req.open("POST", url);
+    req.addEventListener("load", function () {
+        if (req.status >= 200 && req.status < 400) {
+            callback(req.responseText);
+        } else {
+            console.error(req.status + " " + req.statusText + " " + url);
+        }
+    });
+    req.addEventListener("error", function () {
+        console.error("Erreur réseau avec l'URL " + url);
+    });
+    if (isJson) {
+        req.setRequestHeader("Content-Type", "application/json");
+        data = JSON.stringify(data);
+    }
+    req.send(data);
+}*/

@@ -25,7 +25,6 @@ getRequestPromise()
             let img = document.createElement("img");
             img.src = imageUrl;
             myFigure.appendChild(img);
-            div.appendChild(img);
         }
         const insertName = (div, name) => {
             let h1 = document.createElement("h1");
@@ -49,7 +48,6 @@ getRequestPromise()
             let myOption = document.createElement("option");
             myOption.innerHTML = colors;
             mySelect.appendChild(myOption);
-            div.appendChild(colors);
         }
         insertImage(myDiv, response.imageUrl);
         insertName(myFigcap, response.name);
@@ -90,6 +88,7 @@ myPDescription.className = "descripTed";
 let myListButton = document.createElement("div");
 myListButton.className = "listetbuttonTed";
 let myForm = document.createElement("form");
+myForm.className = "couleurs";
 myListButton.appendChild(myForm);
 let myLabel = document.createElement("label");
 myLabel.innerHTML = "Couleurs :  ";
@@ -102,3 +101,5 @@ let myBouton = document.createElement("button");
 myBouton.className = "ajoutpanier";
 myBouton.innerHTML = "Ajouter au panier";
 myListButton.appendChild(myBouton);
+
+

@@ -51,12 +51,22 @@
     </section>
     <section>
         <form action="/js/donneesrecup.js" method="post" id="formulaire">
-            <label for="nom" type="text" pattern="[a-z][A-Z]">Nom</label>:<input id="nom" required>
-            <label for="prenom" type="text" pattern="[a-z][A-Z]">Prénom</label>:<input id="prenom" required>
-            <label for="adressep" type="text" pattern="[0-9]{,3}[a-z][A-Z]">Adresse Postale</label>:<input id="adressep" required>
-            <label for="ville" type="text" pattern="[a-z][A-Z]">Ville</label>:<input id="ville" required>
-            <label for="adressem" type="email">Adresse Mail</label>:<input id="adressem" required>
-            <input type="submit" value="envoyer"></input>
+            <label for="nom" type="text" pattern="[a-z][A-Z]">Nom</label>:
+            <input id="nom" name="nom" onchange="localStorage.nom=this.value" required>
+
+            <label for="prenom" type="text" pattern="[a-z][A-Z]">Prénom</label>:
+            <input id="prenom" name="prenom" onchange="localStorage.prenom=this.value" required>
+
+            <label for="adressep" type="text" pattern="[0-9]{,3}[a-z][A-Z]">Adresse Postale</label>:
+            <input id="adressep" name="adressep" onchange="localStorage.adressep=this.value" required>
+
+            <label for="ville" type="text" pattern="[a-z][A-Z]">Ville</label>:
+            <input id="ville" name="ville" onchange="localStorage.ville=this.value" required>
+
+            <label for="adressem" type="email">Adresse Mail</label>:
+            <input id="adressem" name="adressem" onchange="localStorage.adressem=this.value" required>
+
+            <input type="submit" value="Envoyer" class="bouton"></input>
         </form>
     </section>
 

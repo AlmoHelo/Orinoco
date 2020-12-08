@@ -42,9 +42,9 @@ getRequest()
         pPrice.className = "Prix";
         div.appendChild(pPrice);
     }
-    const insertLink = (div, id) => {
+    const insertLink = (div, _id) => {
         let link = document.createElement("a");
-        link.innerHTML = '<a href=page_produit.html?/:' + id + '>Voir le produit</a>';
+        link.innerHTML = '<a href=page_produit.html?/:' + _id + '>Voir le produit</a>';
         div.appendChild(link);
     }
     for (let i = 0; i < response.length; i++) {
@@ -60,7 +60,7 @@ getRequest()
         insertImage(myDiv, response[i].imageUrl);
         insertName(myTitlePrice, response[i].name);
         insertPrice(myTitlePrice, response[i].price + " €");
-        insertLink(bouton, response[i].id);
+        insertLink(bouton, response[i]._id);
 
         mySection.appendChild(myDiv);
         myDiv.appendChild(myFigure);
