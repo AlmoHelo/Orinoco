@@ -67,11 +67,15 @@ getRequestPromise()
         myFigcap.appendChild(myListButton);
 
         let liste = document.querySelector("select");
+        /*
         liste.addEventListener("change", function(){
             window.localStorage.setItem("couleur", this.value);
         })
+        */
+       let valeur = liste.options[liste.selectedIndex].value;
 
         myBouton.onclick = function () {
+            window.localStorage.setItem("couleur", liste.value);
             window.localStorage.setItem("id", idPage);
             window.localStorage.setItem("name", response.name);
             window.localStorage.setItem("prix", response.price);
