@@ -47,6 +47,7 @@ getRequestPromise()
         const insertColor = (div, colors) => {
             let myOption = document.createElement("option");
             myOption.innerHTML = colors;
+            myOption.value = colors;
             mySelect.appendChild(myOption);
         }
         insertImage(myDiv, response.imageUrl);
@@ -58,8 +59,6 @@ getRequestPromise()
         for (let i = 0; i < couleurs.length; i++) {
             insertColor(mySelect, couleurs[i]);
         }
-
-
         mySec.appendChild(myDiv);
         myDiv.appendChild(myFigure);
         myFigure.appendChild(myFigcap);
@@ -67,12 +66,21 @@ getRequestPromise()
         myFigcap.appendChild(myPDescription);
         myFigcap.appendChild(myListButton);
 
+        let liste = document.querySelector("select");
+        liste.addEventListener("change", function(){
+            window.localStorage.setItem("couleur", this.value);
+        })
+
+        myBouton.onclick = function () {
+            window.localStorage.setItem("id", idPage);
+            window.localStorage.setItem("name", response.name);
+            window.localStorage.setItem("prix", response.price);
+        }
     })
     .catch(function (e) {
         console.log(e);
     });
 console.log();
-
 
 
 let myDiv = document.createElement("div");
@@ -94,6 +102,7 @@ let myLabel = document.createElement("label");
 myLabel.innerHTML = "Couleurs :  ";
 myForm.appendChild(myLabel);
 let mySelect = document.createElement("select")
+mySelect.className="sel"
 myLabel.appendChild(mySelect);
 
 
@@ -101,5 +110,4 @@ let myBouton = document.createElement("button");
 myBouton.className = "ajoutpanier";
 myBouton.innerHTML = "Ajouter au panier";
 myListButton.appendChild(myBouton);
-
 
