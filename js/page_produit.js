@@ -67,18 +67,22 @@ getRequestPromise()
         myFigcap.appendChild(myListButton);
 
         let liste = document.querySelector("select");
-        /*
-        liste.addEventListener("change", function(){
-            window.localStorage.setItem("couleur", this.value);
-        })
-        */
-       let valeur = liste.options[liste.selectedIndex].value;
+        let valeur = liste.options[liste.selectedIndex].value;
 
         myBouton.onclick = function () {
-            window.localStorage.setItem("couleur", liste.value);
-            window.localStorage.setItem("id", idPage);
-            window.localStorage.setItem("name", response.name);
-            window.localStorage.setItem("prix", response.price);
+            let tedProfil = {
+                nom: response.name,
+                prix: response.price,
+                couleur: liste.value,
+                id : idPage
+            };
+            tedProfil = JSON.stringify(tedProfil);
+
+            let peluche = "peluche";
+            let tedID = localStorage.length+1;
+            localStorage[peluche + tedID] = tedProfil;
+
+            return false;
         }
     })
     .catch(function (e) {
@@ -106,7 +110,7 @@ let myLabel = document.createElement("label");
 myLabel.innerHTML = "Couleurs :  ";
 myForm.appendChild(myLabel);
 let mySelect = document.createElement("select")
-mySelect.className="sel"
+mySelect.className = "sel"
 myLabel.appendChild(mySelect);
 
 

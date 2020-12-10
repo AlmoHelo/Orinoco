@@ -1,3 +1,32 @@
+/*function localSto() {
+    let local = document.getElementById('ted');
+
+    let tedNom = localStorage.getItem("nom");
+    let tedPrix = localStorage.getItem("prix");
+    let tedCoul = localStorage.getItem("couleur");
+
+    
+    const insertName = (div, name) => {
+        let p = document.createElement("p");
+        p.innerHTML = name;
+        local.appendChild(p);
+    }
+    
+    insertName(local, tedNom.value);
+}*/
+/*
+if (typeof localStorage!= 'undefined'){
+    if('nom' in localStorage){
+        alert('Message récupéré');
+        document.getElementById('nom').value = localStorage.getItem('nom');
+    }
+} else {
+    alert("localStorage n'est pas supporté");
+}*/
+
+
+
+
 let url = "http://localhost:3000/api/teddies/";
 
 function sendPost(url, toSend){
@@ -18,6 +47,8 @@ function sendPost(url, toSend){
         }
     });
 }
-/*
+
 sendPost()
-.then */
+.then()
+.catch();
+console.log();
