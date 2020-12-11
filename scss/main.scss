@@ -11,7 +11,7 @@ $color-secondary: #FFADE8;
     font-family: "Roboto";
     src: url("../polices/Roboto-Medium.ttf") format("truetype");
 }
-*:not(.fa-shopping-basket){
+*:not(i){
     font-family: 'Roboto', 'comic sans ms'!important;
 }
 html,

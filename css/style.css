@@ -9904,7 +9904,7 @@ h3 {
   font-family: "Roboto";
   src: url("../polices/Roboto-Medium.ttf") format("truetype");
 }
-*:not(.fa-shopping-basket) {
+*:not(i) {
   font-family: "Roboto", "comic sans ms" !important;
 }
 
@@ -10214,7 +10214,7 @@ button:hover {
     font-size: 14px;
   }
 }
-h1 {
+.h1prod {
   font-size: 20px;
   font-weight: bold;
   margin-top: 30px;
@@ -10237,12 +10237,14 @@ h1 {
 .produitArticle figure .produitImg {
   width: 40%;
   height: auto;
+  border-right: 1px solid lightgray;
 }
 
 .produitFigcap {
   width: 60%;
   padding-left: 20px;
   padding-top: 10px;
+  padding-right: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10250,6 +10252,11 @@ h1 {
 .produitFigcap h2 {
   font-size: 30px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.produitFigcap h2 > i {
+  color: red;
 }
 .produitFigcap .colProduit {
   font-size: 20px;

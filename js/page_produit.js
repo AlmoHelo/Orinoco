@@ -75,6 +75,7 @@ getRequestPromise()
             tedProfil.price = response.price;
             tedProfil.color = liste.value;
             tedProfil.img = response.imageUrl;
+            tedProfil.id = idPage;
 
             tedProfil = JSON.stringify(tedProfil);
 

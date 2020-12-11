@@ -49,8 +49,7 @@ function sendPost(url, toSend) {
 }
 
 
-let mySection = document.getElementById("articles");
-
+let mySection = document.getElementById("produits");
 
 const insertImage = (div, imageUrl) => {
     let img = document.createElement("img");
@@ -75,29 +74,41 @@ const insertColor = (div, color) => {
     col.innerHTML = color;
     div.appendChild(col);
 }
+
+let myCross = "";
+
+const insertCross = (div) => {
+    myCross = document.createElement("i"); 
+    myCross.className = "fa fa-times"; 
+    div.appendChild(myCross);
+}
 for (i = 0; i < localStorage.length; i++) {
-    let myPeluche = JSON.parse(window.localStorage.getItem(localStorage.key(i)))
+    let pel = localStorage.key(i); //"peluche"
+    let myPeluche = JSON.parse(window.localStorage.getItem(pel))
 
     let myArticle = document.createElement("div");
     myArticle.className = "produitArticle";
     let myFigure = document.createElement("figure");
     let myFigcap = document.createElement("figcaption");
     myFigcap.className = "produitFigcap";
+    let link = document.createElement("h2");
+    link.innerHTML = '<a href=page_produit.html?/:' + myPeluche.id + '>' + myPeluche.name + '</a>';
 
     insertImage(myFigure, myPeluche.img)
-    insertName(myFigcap, myPeluche.name)
+    myFigcap.appendChild(link)
     insertColor(myFigcap, "Couleur choisie : " + myPeluche.color)
+    insertCross(link);
     insertPrice(myFigcap, "Prix : " + myPeluche.price + " €")
 
     mySection.appendChild(myArticle);
     myArticle.appendChild(myFigure);
     myFigure.appendChild(myFigcap);
+
+
+    myCross.onclick = function (){
+        localStorage.removeItem(pel);   //pour supprimer au clic
+        window.location.reload();       //pour rafraichir page
+    }
+
 }
 
-
-/*
-// récup données dans localStorage
-for (i = 0; i < localStorage.length; i++){
-    console.log(localStorage.getItem(localStorage.key(i)));
-
-}*/
