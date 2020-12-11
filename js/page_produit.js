@@ -70,17 +70,17 @@ getRequestPromise()
         let valeur = liste.options[liste.selectedIndex].value;
 
         myBouton.onclick = function () {
-            let tedProfil = {
-                nom: response.name,
-                prix: response.price,
-                couleur: liste.value,
-                id : idPage
-            };
+            let tedProfil = new Object();
+            tedProfil.name = response.name;
+            tedProfil.price = response.price;
+            tedProfil.color = liste.value;
+            tedProfil.img = response.imageUrl;
+
             tedProfil = JSON.stringify(tedProfil);
 
             let peluche = "peluche";
-            let tedID = localStorage.length+1;
-            localStorage[peluche + tedID] = tedProfil;
+            let nbTed = localStorage.length + 1;
+            localStorage[peluche + nbTed] = tedProfil;
 
             return false;
         }

@@ -57,7 +57,7 @@ getRequest()
         myTitlePrice.className = "titreetprix";
         let bouton = document.createElement("button");
 
-        insertImage(myDiv, response[i].imageUrl);
+        insertImage(myFigure, response[i].imageUrl);
         insertName(myTitlePrice, response[i].name);
         insertPrice(myTitlePrice, response[i].price + " €");
         insertLink(bouton, response[i]._id);
