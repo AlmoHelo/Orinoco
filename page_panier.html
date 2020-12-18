@@ -50,23 +50,23 @@
 
     </section>
     <section>
-        <form action="/js/donneesrecup.js" method="post" id="formulaire">
-            <label for="nom" type="text" pattern="[a-z][A-Z]">Nom</label>:
-            <input id="nom" name="nom" onchange="localStorage.nom=this.value" required>
+        <form action="/" id="formulaire">
+            <label for="nom" type="text">Nom</label>:
+            <input id="nom" name="name" value="" required>
 
-            <label for="prenom" type="text" pattern="[a-z][A-Z]">Prénom</label>:
-            <input id="prenom" name="prenom" onchange="localStorage.prenom=this.value" required>
+            <label for="prenom" type="text">Prénom</label>:
+            <input id="prenom" name="firstname" value="" required>
 
-            <label for="adressep" type="text" pattern="[0-9]{,3}[a-z][A-Z]">Adresse Postale</label>:
-            <input id="adressep" name="adressep" onchange="localStorage.adressep=this.value" required>
+            <label for="adressep" type="text">Adresse Postale</label>:
+            <input id="adressep" name="address" value="" required>
 
-            <label for="ville" type="text" pattern="[a-z][A-Z]">Ville</label>:
-            <input id="ville" name="ville" onchange="localStorage.ville=this.value" required>
+            <label for="ville" type="text">Ville</label>:
+            <input id="ville" name="city" value="" required>
 
             <label for="adressem" type="email">Adresse Mail</label>:
-            <input id="adressem" name="adressem" onchange="localStorage.adressem=this.value" required>
+            <input id="adressem" name="email" value="" required>
 
-            <input type="submit" value="Envoyer" class="bouton"></input>
+            <button type="submit" value="ok" onclick="getValue();" id="bouton">Envoyer</input>
         </form>
     </section>
 

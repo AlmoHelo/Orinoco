@@ -33,6 +33,7 @@
     padding-top: 5px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     & .ajoutpanier {
         margin-left: 0;
         margin-top: 0;
@@ -55,11 +56,17 @@
             margin-left: 0px;
             border-bottom: none;
             display: flex;
+            height: 30px;
         }
         & select{
             width: 140px;
             font-size: 15px;
         }
+    }
+    & .qte {
+        font-size: 18px;
+        width: 40%;
+        height: 30px;
     }
 }
 @media screen and (max-width: 768px) {
@@ -74,6 +81,11 @@
     .figcapTed {
         width: 100%;
         & .titreetprixTed {
+            & h1{
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 0;
+            }
             margin-top: 10px;
             margin-bottom: 10px;
             font-size: 20px;
@@ -81,6 +93,8 @@
         & .descripTed {
             margin-bottom: 10px;
             font-size: 12px;
+            width: 80%;
+            margin: auto;
         }
     }
     .listetbuttonTed {
@@ -92,8 +106,14 @@
             margin: auto;
             font-size: 12px;
         }
+        & .qte {
+            width: 40%;
+            margin: auto;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
         & form{
-            width: 75%;
+            width: 68%;
             margin: auto;
             margin-bottom: 10px;
             & label{

@@ -10111,6 +10111,7 @@ button:hover {
   padding-top: 5px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .listetbuttonTed .ajoutpanier {
   margin-left: 0;
@@ -10135,10 +10136,16 @@ button:hover {
   margin-left: 0px;
   border-bottom: none;
   display: flex;
+  height: 30px;
 }
 .listetbuttonTed form select {
   width: 140px;
   font-size: 15px;
+}
+.listetbuttonTed .qte {
+  font-size: 18px;
+  width: 40%;
+  height: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -10159,9 +10166,16 @@ button:hover {
     margin-bottom: 10px;
     font-size: 20px;
   }
+  .figcapTed .titreetprixTed h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+  }
   .figcapTed .descripTed {
     margin-bottom: 10px;
     font-size: 12px;
+    width: 80%;
+    margin: auto;
   }
 
   .listetbuttonTed {
@@ -10174,8 +10188,14 @@ button:hover {
     margin: auto;
     font-size: 12px;
   }
+  .listetbuttonTed .qte {
+    width: 40%;
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
   .listetbuttonTed form {
-    width: 75%;
+    width: 68%;
     margin: auto;
     margin-bottom: 10px;
   }
@@ -10255,19 +10275,35 @@ button:hover {
   display: flex;
   justify-content: space-between;
 }
-.produitFigcap h2 > i {
+.produitFigcap h2 i {
   color: red;
 }
 .produitFigcap .colProduit {
   font-size: 20px;
   margin-top: 20px;
 }
-.produitFigcap .produitPrix {
+.produitFigcap .qteprix {
+  display: flex;
+  font-weight: bold;
+  font-size: 20px;
+}
+.produitFigcap .qteprix .qte {
+  width: 50%;
+}
+.produitFigcap .qteprix .produitPrix {
+  width: 50%;
   display: flex;
   justify-content: flex-end;
   margin-right: 10px;
+}
+
+#sommeTotal {
+  margin-top: 30px;
+  margin-right: 30px;
+  font-size: 25px;
   font-weight: bold;
-  font-size: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 form {
@@ -10328,11 +10364,24 @@ form .bouton:hover {
     font-size: 12px;
     margin-top: 10px;
   }
-  .produitFigcap .produitPrix {
+  .produitFigcap .qteprix {
     display: flex;
-    margin-top: 20px;
-    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 12px;
+  }
+  .produitFigcap .qteprix .qte {
+    width: 50%;
+    margin-right: 10px;
+  }
+  .produitFigcap .qteprix .produitPrix {
+    width: 50%;
+    margin-right: 0;
+  }
+
+  #sommeTotal {
+    font-size: 20px;
+    margin-right: 20px;
   }
 
   form {

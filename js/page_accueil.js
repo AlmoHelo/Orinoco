@@ -19,6 +19,14 @@ function getRequest() {
 
 getRequest()
 .then(function (response) {
+    
+    function thousands_separators(num)              //ajouter la virgule au prix
+    {
+      var num_parts = num.toString().split(".");
+      num_parts[0] = num_parts[0].replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+      return num_parts.join(".");
+    }
+    
     const insertImage = (div, imageUrl) => {
         let img = document.createElement("img");
         img.className = "imgArticle";
@@ -59,7 +67,7 @@ getRequest()
 
         insertImage(myFigure, response[i].imageUrl);
         insertName(myTitlePrice, response[i].name);
-        insertPrice(myTitlePrice, response[i].price + " €");
+        insertPrice(myTitlePrice, thousands_separators(response[i].price)+ " €");
         insertLink(bouton, response[i]._id);
 
         mySection.appendChild(myDiv);

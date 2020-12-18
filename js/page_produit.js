@@ -1,4 +1,29 @@
 let idPage = document.location.search.substr(3);        //récupère l'id
+let myDiv = document.createElement("div");
+myDiv.className = "DivTed";
+let myFigure = document.createElement("figure");
+myFigure.className = "imgTed";
+let myFigcap = document.createElement("figcaption");
+myFigcap.className = "figcapTed";
+let myTitlePrice = document.createElement("div");
+myTitlePrice.className = "titreetprixTed";
+let myPDescription = document.createElement("div");
+myPDescription.className = "descripTed";
+let myListButton = document.createElement("div");
+myListButton.className = "listetbuttonTed";
+let myForm = document.createElement("form");
+myForm.className = "couleurs";
+myListButton.appendChild(myForm);
+let myLabel = document.createElement("label");
+myLabel.innerHTML = "Couleurs :  ";
+myForm.appendChild(myLabel);
+let mySelect = document.createElement("select")
+mySelect.className = "sel"
+myLabel.appendChild(mySelect);
+let myBouton = document.createElement("button");
+myBouton.className = "ajoutpanier";
+myBouton.innerHTML = "Ajouter au panier";
+myListButton.appendChild(myBouton);
 
 function getRequestPromise() {
     return new Promise((resolve, reject) => {
@@ -21,6 +46,13 @@ const mySec = document.getElementById("produit");
 
 getRequestPromise()
     .then(function (response) {
+
+        function thousands_separators(num)              //ajouter la virgule au prix
+        {
+            var num_parts = num.toString().split(".");
+            num_parts[0] = num_parts[0].replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+            return num_parts.join(".");
+        }
         const insertImage = (div, imageUrl) => {
             let img = document.createElement("img");
             img.src = imageUrl;
@@ -52,7 +84,7 @@ getRequestPromise()
         }
         insertImage(myDiv, response.imageUrl);
         insertName(myFigcap, response.name);
-        insertPrice(myFigcap, response.price + " €");
+        insertPrice(myFigcap, thousands_separators(response.price) + " €");
         insertDescriptif(myFigcap, response.description);
 
         let couleurs = response.colors;
@@ -66,23 +98,36 @@ getRequestPromise()
         myFigcap.appendChild(myPDescription);
         myFigcap.appendChild(myListButton);
 
+
         let liste = document.querySelector("select");
         let valeur = liste.options[liste.selectedIndex].value;
 
         myBouton.onclick = function () {
-            let tedProfil = new Object();
-            tedProfil.name = response.name;
-            tedProfil.price = response.price;
-            tedProfil.color = liste.value;
-            tedProfil.img = response.imageUrl;
-            tedProfil.id = idPage;
+           let tedProfil = {
+                nom: response.name,
+                prix: thousands_separators(response.price),
+                couleur: liste.value,
+                img: response.imageUrl,
+                id: idPage,
+                quantite: 1
+            };
 
-            tedProfil = JSON.stringify(tedProfil);
+            
 
-            let peluche = "peluche";
-            let nbTed = localStorage.length + 1;
-            localStorage[peluche + nbTed] = tedProfil;
+            if(localStorage.getItem('Peluche')){
+                let myTeddies = JSON.parse(localStorage.getItem('Peluche'))
+                if(typeof myTeddies === "object" && !Array.isArray(myTeddies)){
+                   const tab = [myTeddies,tedProfil]
+                    localStorage.setItem('Peluche',JSON.stringify(tab))
+                }else{
+                    myTeddies.push(tedProfil)
+                    localStorage.setItem('Peluche',JSON.stringify(myTeddies))
+                }
+            }else{
+                localStorage.setItem('Peluche',JSON.stringify(tedProfil))
+            }
 
+           // alert("Produit ajouter au panier !");
             return false;
         }
     })
@@ -91,32 +136,4 @@ getRequestPromise()
     });
 console.log();
 
-
-let myDiv = document.createElement("div");
-myDiv.className = "DivTed";
-let myFigure = document.createElement("figure");
-myFigure.className = "imgTed";
-let myFigcap = document.createElement("figcaption");
-myFigcap.className = "figcapTed";
-let myTitlePrice = document.createElement("div");
-myTitlePrice.className = "titreetprixTed";
-let myPDescription = document.createElement("div");
-myPDescription.className = "descripTed";
-let myListButton = document.createElement("div");
-myListButton.className = "listetbuttonTed";
-let myForm = document.createElement("form");
-myForm.className = "couleurs";
-myListButton.appendChild(myForm);
-let myLabel = document.createElement("label");
-myLabel.innerHTML = "Couleurs :  ";
-myForm.appendChild(myLabel);
-let mySelect = document.createElement("select")
-mySelect.className = "sel"
-myLabel.appendChild(mySelect);
-
-
-let myBouton = document.createElement("button");
-myBouton.className = "ajoutpanier";
-myBouton.innerHTML = "Ajouter au panier";
-myListButton.appendChild(myBouton);
 
