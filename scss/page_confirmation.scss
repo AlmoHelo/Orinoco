@@ -1,0 +1,65 @@
+#confirm {
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 0.5px solid lightgrey;
+    box-shadow: 2px 2px 10px lightgrey;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    & a {
+        background-color: #f0d1ff;
+        border: 0.5px solid #f0d1ff;
+        box-shadow: 1px 1px 1px #f0d1ff;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 5px;
+        font-size: 20px;
+        &:hover {
+            background-color: #ffd1f2;
+            border: 0.5px solid #ffd1f2;
+            box-shadow: 1px 1px 1px #ffd1f2;
+        }
+    }
+}
+.information {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 35px;
+    text-align: center;
+    > p {
+        margin-top: 5px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #confirm {
+        width: 90%;
+    }
+    .information {
+        width: 90%;
+        font-size: 20px;
+        margin-bottom: 0;
+        > p {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #confirm{
+        width: 80%;
+    }
+    .information{
+        width: 80%;
+        > p {
+            margin-bottom: 30px;
+        }
+    }
+}
