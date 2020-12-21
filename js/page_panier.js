@@ -59,7 +59,7 @@ if (pel == null || pel == "[]") {
     if (Array.isArray(myPeluche) == false) {
 
         let plein = document.createElement("h1");
-        plein.className= "h1prod"
+        plein.className = "h1prod"
         plein.textContent = "Votre panier contient : ";
         mySection.appendChild(plein)
 
@@ -143,57 +143,86 @@ if (pel == null || pel == "[]") {
 myForm.addEventListener('submit', function (e) {
     e.preventDefault()
 
-    // return console.log("submit")
+
+    //Regex
+    let checkNumber = /[0-9]/;
+    let checkMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let checkSpecialCharacter = /[§!@#$%^&*().?":{}|<>]/;
+
+    let checkMessage = "";
+
+    //récup des inputs
     let nom = document.getElementById("nom").value;
     let prenom = document.getElementById("prenom").value;
     let adresse = document.getElementById("adressep").value;
     let ville = document.getElementById("ville").value;
     let mail = document.getElementById("adressem").value;
 
-    //const regexNom = new RegExp("[a-zA-Z]+$", "g");
-    //const regexAddress = new RegExp("[0-9]*) ?([a-zA-Z,\. ]*) ?([0-9]{5}) ?([a-zA-Z]*");
-    //const regexEmail = new RegExp("[\w-\.]+@[\w\.]+\.{1}[\w]+");
-
-    /* if (regexNom.test(nom) == false) {
-         alert("Le nom saisie n'est pas valide")
-     }
-     if (regexNom.test(prenom) == false) {
-         alert("Le prénom saisie n'est pas valide")
-     }
-     if (regexAddress.test(adresse) == false) {
-         alert("L'adresse postale saisie n'est pas valide")
-     }
-     if (regexNom.test(ville) == false) {
-         alert("La ville saisie n'est pas valide")
-     }
-     if (regexEmail.test(mail) == false) {
-         alert("L'adresse mail saisie n'est pas valide")
-     }*/
-
-    let contact = {                         // recupére les valeurs du formulaire
-        firstName: nom,
-        lastName: prenom,
-        address: adresse,
-        city: ville,
-        email: mail
+    //vérification pour le nom
+    if (checkNumber.test(nom) == true || checkSpecialCharacter.test(nom) == true) {
+        checkMessage = "Veuillez vérifier les informations concernant votre nom. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
+    } else {
+        console.log("Nom accepté");
     }
-
-    let products = [];
-
-    for (let i = 0; i < myPeluche.length; i++) {
-        let tedID = myPeluche[i].id;
-        products.push(tedID)
+    //vérification pour le prénom
+    if (checkNumber.test(prenom) == true || checkSpecialCharacter.test(prenom) == true) {
+        checkMessage = "Veuillez vérifier les informations concernant votre prénom. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
+    } else {
+        console.log("Nom accepté");
     }
-    let toSend = { contact, products };
+    //vérification pour l'adresse postale
+    if (checkSpecialCharacter.test(adresse) == true) {
+        checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre adresse postale. Les caractères spéciaux ne sont pas autorisés";
+    } else {
+        console.log(" Adresse postale acceptée");
+    }
+    //vérification pour la ville
+    if (checkSpecialCharacter.test(ville) == true || checkNumber.test(ville) == true) {
+        checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre ville. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
+    } else {
+        console.log("Ville acceptée");
+    }
+    //vérification pour l'e-mail
+    if (checkMail.test(mail) == false) {
+        checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre email. Les caractères spéciaux ne sont pas autorisés";
+      } else {
+        console.log("Adresse mail acceptée");
+      }
 
-    sendPost("http://localhost:3000/api/teddies/order", toSend)
-        .then(function (response) {
-            console.log(response)
-        })
-        .catch(function (e) {
-            console.log(e);
-        });
+    //Vérifier si les champs sont conformes
+    if (checkMessage != "") {
+        alert("Attention certaines données ne sont pas conformes :" + "\n" + checkMessage);
+    } else {
+        //Si les champs sont conformes
 
+        // recupére les valeurs du formulaire
+        let contact = {                         
+            firstName: nom,
+            lastName: prenom,
+            address: adresse,
+            city: ville,
+            email: mail
+        }
+
+        let products = [];
+
+        //on récupère les produits
+        for (let i = 0; i < myPeluche.length; i++) {
+            let tedID = myPeluche[i].id;
+            products.push(tedID)
+        }
+
+        let toSend = { contact, products };
+        
+        sendPost("http://localhost:3000/api/teddies/order", toSend)
+            .then(function (response) {
+                console.log(response)
+            })
+            .catch(function (e) {
+                console.log(e);
+            });
+
+    }
     if (localStorage.getItem("order") != null) {
         let order = JSON.parse(localStorage.getItem("order"));
         nom.innerHTML = order.contact.firstName;
