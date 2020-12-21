@@ -88,9 +88,9 @@ form{
         margin-top: 20px;
         margin-bottom: 10px;
     }
-    & .bouton{
+    & #bouton{
+        border: 1px solid red;
         font-size: 20px;
-        margin: auto;
         margin-top: 30px;
         margin-bottom: 30px;
         width: 140px;
@@ -156,7 +156,7 @@ form{
             margin-left: 50px;
             margin-top: 10px;
         }
-        & .bouton{
+        & #bouton{
             font-size: 15px;
             width: 100px;
         }

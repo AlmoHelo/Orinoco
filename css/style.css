@@ -10329,9 +10329,9 @@ form input {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-form .bouton {
+form #bouton {
+  border: 1px solid red;
   font-size: 20px;
-  margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 140px;
@@ -10342,7 +10342,7 @@ form .bouton {
   font-weight: bold;
   justify-content: center;
 }
-form .bouton:hover {
+form #bouton:hover {
   opacity: 0.8;
 }
 
@@ -10401,7 +10401,7 @@ form .bouton:hover {
     margin-left: 50px;
     margin-top: 10px;
   }
-  form .bouton {
+  form #bouton {
     font-size: 15px;
     width: 100px;
   }
