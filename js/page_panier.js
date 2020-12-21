@@ -143,7 +143,6 @@ if (pel == null || pel == "[]") {
 myForm.addEventListener('submit', function (e) {
     e.preventDefault()
 
-
     //Regex
     let checkNumber = /[0-9]/;
     let checkMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -185,18 +184,19 @@ myForm.addEventListener('submit', function (e) {
     //vérification pour l'e-mail
     if (checkMail.test(mail) == false) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre email. Les caractères spéciaux ne sont pas autorisés";
-      } else {
+    } else {
         console.log("Adresse mail acceptée");
-      }
+    }
 
     //Vérifier si les champs sont conformes
     if (checkMessage != "") {
         alert("Attention certaines données ne sont pas conformes :" + "\n" + checkMessage);
     } else {
         //Si les champs sont conformes
+        localStorage.removeItem("Peluche");
 
         // recupére les valeurs du formulaire
-        let contact = {                         
+        let contact = {
             firstName: nom,
             lastName: prenom,
             address: adresse,
@@ -213,7 +213,7 @@ myForm.addEventListener('submit', function (e) {
         }
 
         let toSend = { contact, products };
-        
+
         sendPost("http://localhost:3000/api/teddies/order", toSend)
             .then(function (response) {
                 console.log(response)
@@ -228,11 +228,9 @@ myForm.addEventListener('submit', function (e) {
         nom.innerHTML = order.contact.firstName;
         prenom.innerHTML = order.contact.lastName;
         document.getElementById("orderId").innerHTML = order.orderID;
-        console.log(order)
         localStorage.removeItem("order");
     } else {
         window.location = "./page_accueil.html";
-        localStorage.removeItem("Peluche");
     }
 })
 let url = "http://localhost:3000/api/teddies/order";

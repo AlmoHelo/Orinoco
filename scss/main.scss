@@ -1,7 +1,7 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-$color-primary: #B184E6;
-$color-secondary: #FFADE8;
+$color-primary: #b184e6;
+$color-secondary: #ffade8;
 
 @font-face {
     font-family: "Nerk";
@@ -11,8 +11,8 @@ $color-secondary: #FFADE8;
     font-family: "Roboto";
     src: url("../polices/Roboto-Medium.ttf") format("truetype");
 }
-*:not(i){
-    font-family: 'Roboto', 'comic sans ms'!important;
+*:not(i) {
+    font-family: "Roboto", "comic sans ms" !important;
 }
 html,
 body,
@@ -44,7 +44,6 @@ a {
     color: black;
 }
 
-
 @import "../scss/page_accueil.scss";
 @import "../scss/page_produit.scss";
 @import "../scss/page_panier.scss";
@@ -63,7 +62,7 @@ a {
         font-size: 30px;
     }
 }
-.menuLogo{
+.menuLogo {
     display: flex;
     align-items: center;
 }
@@ -71,53 +70,50 @@ a {
     height: 100px;
 }
 /* début menu déroulant*/
-.banniere{
-    & nav{
+.banniere {
+    & nav {
         width: 80px;
         background-color: #f3e9f1;
         position: sticky;
         top: 0px;
-        & ul{
+        & ul {
             list-style-type: none;
-            & li{
+            & li {
                 float: left;
                 width: 25%;
                 text-align: center;
                 position: relative;
-                & i{
+                & i {
                     font-size: 30px;
                 }
             }
-            &::after{
+            &::after {
                 content: "";
                 display: table;
                 clear: both;
             }
         }
-        & a{
+        & a {
             display: block;
             text-decoration: none;
             color: black;
             border-bottom: 2px solid transparent;
             padding: 10px 0px;
             & :hover{
-                color: orange;
-                border-bottom: 2px solid gold;
                 display: flex;
                 flex-direction: column;
-                border: 1px solid red;
             }
         }
     }
 }
-.sous{
+.sous {
     display: none;
-    box-shadow: 0px 1px 2px #CCC;
+    box-shadow: 0px 1px 2px #ccc;
     background-color: white;
     position: absolute;
     width: 100%;
     z-index: 1000;
-    & li{
+    & li {
         float: none;
         width: 100%;
         text-align: left;
@@ -126,30 +122,31 @@ a {
         padding: 10px;
         border-bottom: none;
         width: 80px;
-        &:hover{
+        &:hover {
             border-bottom: none;
             background-color: darkgray;
         }
     }
 }
-nav > ul li:hover .sous{
+nav > ul li:hover .sous {
     display: block;
     display: flex;
     flex-direction: column;
     width: 80px;
 }
-.deroulant > a::after{
+.deroulant > a::after {
     content: "";
     font-size: 12px;
 }
 /*fin menu déroulant */
+
 .ourson_accueil {
     width: 100%;
 }
 .accueil_texte {
     font: {
         size: 50px;
-        family: 'Nerk', 'arial'!important;
+        family: "Nerk", "arial" !important;
     }
     position: absolute;
     top: 25%;
@@ -157,16 +154,16 @@ nav > ul li:hover .sous{
 }
 /*footer*/
 
-footer{
+footer {
     height: 100px;
-    background-color: #FFD1F2;
+    background-color: #ffd1f2;
     & a {
         display: flex;
-        justify-content: center;   
+        justify-content: center;
         padding-top: 30px;
         font-size: 40px;
         font-weight: bold;
-        font-family: 'Nerk', 'comic sans ms'!important;
+        font-family: "Nerk", "comic sans ms" !important;
     }
 }
 @media screen and (max-width: 768px) {
@@ -175,10 +172,10 @@ footer{
         > a {
             font-size: 15px;
         }
-        & i{
-            font-size: 20px!important;
+        & i {
+            font-size: 20px !important;
         }
-        & nav{
+        & nav {
             width: 40px;
         }
     }
@@ -189,7 +186,7 @@ footer{
         font-size: 16px;
         top: 90px;
     }
-    footer a{
+    footer a {
         font-size: 30px;
     }
 }

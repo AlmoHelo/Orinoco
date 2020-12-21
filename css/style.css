@@ -9994,7 +9994,7 @@ a {
 button {
   width: 140px;
   height: 30px;
-  background: linear-gradient(#FFADE8, #B184E6);
+  background: linear-gradient(#ffade8, #b184e6);
   border-radius: 20px;
   border: none;
   margin-top: 1%;
@@ -10336,7 +10336,7 @@ form .bouton {
   margin-bottom: 30px;
   width: 140px;
   height: 30px;
-  background: linear-gradient(#FFADE8, #B184E6);
+  background: linear-gradient(#ffade8, #b184e6);
   border-radius: 20px;
   border: none;
   font-weight: bold;
@@ -10546,16 +10546,13 @@ form .bouton:hover {
   padding: 10px 0px;
 }
 .banniere nav a :hover {
-  color: orange;
-  border-bottom: 2px solid gold;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
 }
 
 .sous {
   display: none;
-  box-shadow: 0px 1px 2px #CCC;
+  box-shadow: 0px 1px 2px #ccc;
   background-color: white;
   position: absolute;
   width: 100%;
@@ -10604,7 +10601,7 @@ nav > ul li:hover .sous {
 /*footer*/
 footer {
   height: 100px;
-  background-color: #FFD1F2;
+  background-color: #ffd1f2;
 }
 footer a {
   display: flex;
