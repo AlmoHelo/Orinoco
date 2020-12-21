@@ -1,6 +1,4 @@
 const myForm = document.querySelector('#formulaire')
-//formulaire
-
 
 //liste des produits
 let mySection = document.getElementById("produits");
@@ -40,48 +38,91 @@ const insertCross = (div) => {
 //recupération des Peluches sur le local storage
 let pel = localStorage.getItem("Peluche");
 let myPeluche = JSON.parse(pel);
+console.log(pel)
 
-if (pel == null) {
-    mySection.textContent = "Votre panier est vide !";
+let myArticle = document.createElement("div");
+myArticle.className = "produitArticle";
+let myFigure = document.createElement("figure");
+let myFigcap = document.createElement("figcaption");
+myFigcap.className = "produitFigcap";
+let myQtePrix = document.createElement("div");
+myQtePrix.className = "qteprix";
+let link = document.createElement("h2");
+let quantite = document.createElement("p");
+
+if (pel == null || pel == "[]") {
+    let vide = document.createElement("h1");
+    vide.className = "h1prod"
+    vide.textContent = "Votre panier est vide !";
+    mySection.appendChild(vide)
 } else {
-    for (let m = 0; m < myPeluche.length; m++) {
+    if (Array.isArray(myPeluche) == false) {
+
+        let plein = document.createElement("h1");
+        plein.className= "h1prod"
+        plein.textContent = "Votre panier contient : ";
+        mySection.appendChild(plein)
 
         //structure par peluche
-        let myArticle = document.createElement("div");
-        myArticle.className = "produitArticle";
-        let myFigure = document.createElement("figure");
-        let myFigcap = document.createElement("figcaption");
-        myFigcap.className = "produitFigcap";
-        let myQtePrix = document.createElement("div");
-        myQtePrix.className = "qteprix";
-        let link = document.createElement("h2");
-        let quantite = document.createElement("p");
-        quantite.innerHTML = "Quantité : " + myPeluche[m].quantite;
+        quantite.innerHTML = "Quantité : " + myPeluche.quantite;
         quantite.className = "qte";
 
         //lien vers la page du produit
-        link.innerHTML = '<a href=page_produit.html?/:' + myPeluche[m].id + '>' + myPeluche[m].nom + '</a>';
+        link.innerHTML = '<a href=page_produit.html?/:' + myPeluche.id + '>' + myPeluche.nom + '</a>';
 
         //insertion de chaque élément
-        insertImage(myFigure, myPeluche[m].img)
+        insertImage(myFigure, myPeluche.img)
         myFigcap.appendChild(link)
-        insertColor(myFigcap, "Couleur choisie : " + myPeluche[m].couleur)
+        insertColor(myFigcap, "Couleur choisie : " + myPeluche.couleur)
         insertCross(link);
         myQtePrix.appendChild(quantite)
-        insertPrice(myQtePrix, "Prix : " + myPeluche[m].prix + " €")
+        insertPrice(myQtePrix, "Prix : " + myPeluche.prix + " €")
 
         mySection.appendChild(myArticle);
         myArticle.appendChild(myFigure);
         myFigure.appendChild(myFigcap);
         myFigcap.appendChild(myQtePrix);
 
-        myCross.onclick = function () {
+    } else {
+        for (let m = 0; m < myPeluche.length; m++) {
+            //structure par peluche
+            let myArticle = document.createElement("div");
+            myArticle.className = "produitArticle";
+            let myFigure = document.createElement("figure");
+            let myFigcap = document.createElement("figcaption");
+            myFigcap.className = "produitFigcap";
+            let myQtePrix = document.createElement("div");
+            myQtePrix.className = "qteprix";
+            let link = document.createElement("h2");
+            let quantite = document.createElement("p");
+            quantite.innerHTML = "Quantité : " + myPeluche[m].quantite;
+            quantite.className = "qte";
 
+            //lien vers la page du produit
+            link.innerHTML = '<a href=page_produit.html?/:' + myPeluche[m].id + '>' + myPeluche[m].nom + '</a>';
 
-            window.location.reload();       //pour rafraichir page
+            //insertion de chaque élément
+            insertImage(myFigure, myPeluche[m].img)
+            myFigcap.appendChild(link)
+            insertColor(myFigcap, "Couleur choisie : " + myPeluche[m].couleur)
+            insertCross(link);
+            myQtePrix.appendChild(quantite)
+            insertPrice(myQtePrix, "Prix : " + myPeluche[m].prix + " €")
+
+            mySection.appendChild(myArticle);
+            myArticle.appendChild(myFigure);
+            myFigure.appendChild(myFigcap);
+            myFigcap.appendChild(myQtePrix);
+
+            annulerArticle = (m) => {
+                let essaie = myPeluche.indexOf(myPeluche[m])
+                let removedItem = myPeluche.splice(essaie, 1);
+                localStorage.clear();
+                let tabAfter = localStorage.setItem("Peluche", JSON.stringify(myPeluche));
+                window.location.reload();
+            }
+            myCross.addEventListener("click", (event) => { this.annulerArticle(m); })
         }
-
-
     }
     // somme totale de tous les produits
     let totalPrix = document.createElement("p");
@@ -95,7 +136,9 @@ if (pel == null) {
         sommeTotal += conversion;
     }
     totalPrix.textContent = "Total : " + sommeTotal + " €";
+
 }
+
 
 myForm.addEventListener('submit', function (e) {
     e.preventDefault()
@@ -159,8 +202,8 @@ myForm.addEventListener('submit', function (e) {
         console.log(order)
         localStorage.removeItem("order");
     } else {
-        alert("Merci pour votre commande. A bientôt !");
         window.location = "./page_accueil.html";
+        localStorage.removeItem("Peluche");
     }
 })
 let url = "http://localhost:3000/api/teddies/order";

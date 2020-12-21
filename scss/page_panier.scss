@@ -1,8 +1,8 @@
 .h1prod{
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
-    margin-top: 30px;
-    margin-left: 30px;
+    margin-top: 40px;
+    text-align: center;
 }
 .produitArticle{
     width: 90%;
@@ -106,14 +106,15 @@ form{
     }
 }
 @media screen and (max-width: 768px) {
-    h1{
-        font-size: 12px;
+    .h1prod{
+        font-size: 20px;
         margin-top: 20px;
-        margin-left: 20px;
+        margin-bottom: 0;
     }
     .produitFigcap{
         padding-left: 10px;
-        padding-top: 5px;
+        padding-right: 10px;
+        padding-top: 10px;
         & h2 {
             font-size: 15px;
         }
@@ -142,6 +143,7 @@ form{
     }
     form{
         width: 310px;
+        margin-top: 30px;
         margin-bottom: 30px;
         & label{
             font-size: 15px;
@@ -162,8 +164,12 @@ form{
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .h1prod{
+        font-size: 25px;
+    }
     form{
         width: 450px;
+        margin-top: 50px;
         margin-bottom: 30px;
         & label{
             margin-top: 20px;
