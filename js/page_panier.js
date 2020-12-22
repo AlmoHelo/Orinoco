@@ -205,7 +205,7 @@ myForm.addEventListener('submit', function (e) {
         }
 
         let products = [];
-
+        
         //on récupère les produits
         for (let i = 0; i < myPeluche.length; i++) {
             let tedID = myPeluche[i].id;
@@ -230,7 +230,7 @@ myForm.addEventListener('submit', function (e) {
         document.getElementById("orderId").innerHTML = order.orderID;
         localStorage.removeItem("order");
     } else {
-        window.location = "./page_accueil.html";
+        console.log("erreur")
     }
 })
 let url = "http://localhost:3000/api/teddies/order";
