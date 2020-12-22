@@ -27,7 +27,7 @@ insertLine = (div, myId) => {
 }
 const insertLink = (div, _id) => {
     let link = document.createElement("a");
-    link.innerHTML = "<a href=page_accueil.html>Retour à la page d'accueil</a>";
+    link.innerHTML = "<a href=index.html>Retour à la page d'accueil</a>";
     div.appendChild(link);
 }
 mySection.appendChild(info)
