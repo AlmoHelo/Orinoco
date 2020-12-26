@@ -39,6 +39,7 @@ const insertCross = (div) => {
 let pel = localStorage.getItem("Peluche");
 let myPeluche = JSON.parse(pel);
 console.log(pel)
+console.log(Boolean(pel))
 
 let myArticle = document.createElement("div");
 myArticle.className = "produitArticle";
