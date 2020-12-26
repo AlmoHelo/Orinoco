@@ -1,4 +1,6 @@
 let idPage = document.location.search.substr(3);        //récupère l'id
+console.log(idPage)
+
 let myDiv = document.createElement("div");
 myDiv.className = "DivTed";
 let myFigure = document.createElement("figure");
@@ -34,6 +36,7 @@ function getRequestPromise() {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
                     resolve(JSON.parse(this.responseText));
+                    console.log(JSON.parse(this.responseText))
                 } else {
                     reject(XMLHttpRequest);
                 }
@@ -91,6 +94,7 @@ getRequestPromise()
         for (let i = 0; i < couleurs.length; i++) {
             insertColor(mySelect, couleurs[i]);
         }
+
         mySec.appendChild(myDiv);
         myDiv.appendChild(myFigure);
         myFigure.appendChild(myFigcap);
@@ -100,8 +104,7 @@ getRequestPromise()
 
 
         let liste = document.querySelector("select");
-        let valeur = liste.options[liste.selectedIndex].value;
-
+        
         myBouton.onclick = function () {
            let tedProfil = {
                 nom: response.name,
@@ -124,8 +127,9 @@ getRequestPromise()
             }else{
                 localStorage.setItem('Peluche',JSON.stringify(tedProfil))
             }
+            console.log("Contenu du local storage: " + localStorage.getItem('Peluche'))
 
-           // alert("Produit ajouter au panier !");
+            alert("Produit ajouter au panier !");
             return false;
         }
     })
