@@ -132,11 +132,15 @@ if (pel == null || pel == "[]") {
 
     let sommeTotal = 0;
 
-    for (let p = 0; p < myPeluche.length; p++) {
-        let conversion = parseFloat(myPeluche[p].prix);
-        sommeTotal += conversion;
+    if (Array.isArray(myPeluche) == false) {
+        totalPrix.textContent = "Total : " + myPeluche.prix + " €";
+    }else{
+        for (let p = 0; p < myPeluche.length; p++) {
+            let conversion = parseFloat(myPeluche[p].prix);
+            sommeTotal += conversion;
+        }
+        totalPrix.textContent = "Total : " + sommeTotal + " €";
     }
-    totalPrix.textContent = "Total : " + sommeTotal + " €";
 
 }
 
