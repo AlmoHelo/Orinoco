@@ -111,9 +111,7 @@ getRequestPromise()
                 id: idPage,
                 quantite: 1
             };
-
             
-
             if(localStorage.getItem('Peluche')){
                 let myTeddies = JSON.parse(localStorage.getItem('Peluche'))
                 if(typeof myTeddies === "object" && !Array.isArray(myTeddies)){
