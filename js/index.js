@@ -9,10 +9,8 @@ function getRequest() {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
                     resolve(JSON.parse(this.responseText));
-                    console.log("Les valeurs ont bien été récupérées !")
                 } else {
                     reject(XMLHttpRequest);
-                    console.log("Une erreur s'est produite !")
                 }
             }
         }
@@ -79,7 +77,6 @@ getRequest()
 
             myDiv.appendChild(bouton);
         }
-        console.log(response)
     })
     .catch(function (e) {
         console.log(e)

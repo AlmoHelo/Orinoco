@@ -38,8 +38,6 @@ const insertCross = (div) => {
 //recupération des Peluches sur le local storage
 let pel = localStorage.getItem("Peluche");
 let myPeluche = JSON.parse(pel);
-console.log(pel)
-console.log(Boolean(pel))
 
 let myArticle = document.createElement("div");
 myArticle.className = "produitArticle";
@@ -58,7 +56,6 @@ if (pel == null || pel == "[]") {
     mySection.appendChild(vide)
 } else {
     if (Array.isArray(myPeluche) == false) {
-
         let plein = document.createElement("h1");
         plein.className = "h1prod"
         plein.textContent = "Votre panier contient : ";
@@ -134,7 +131,7 @@ if (pel == null || pel == "[]") {
 
     if (Array.isArray(myPeluche) == false) {
         totalPrix.textContent = "Total : " + myPeluche.prix + " €";
-    }else{
+    } else {
         for (let p = 0; p < myPeluche.length; p++) {
             let conversion = parseFloat(myPeluche[p].prix);
             sommeTotal += conversion;
@@ -143,7 +140,6 @@ if (pel == null || pel == "[]") {
     }
 
 }
-
 
 myForm.addEventListener('submit', function (e) {
     e.preventDefault()
@@ -165,33 +161,23 @@ myForm.addEventListener('submit', function (e) {
     //vérification pour le nom
     if (checkNumber.test(nom) == true || checkSpecialCharacter.test(nom) == true) {
         checkMessage = "Veuillez vérifier les informations concernant votre nom. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
-    } else {
-        console.log("Nom accepté");
     }
     //vérification pour le prénom
     if (checkNumber.test(prenom) == true || checkSpecialCharacter.test(prenom) == true) {
         checkMessage = "Veuillez vérifier les informations concernant votre prénom. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
-    } else {
-        console.log("Nom accepté");
-    }
+    } 
     //vérification pour l'adresse postale
     if (checkSpecialCharacter.test(adresse) == true) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre adresse postale. Les caractères spéciaux ne sont pas autorisés";
-    } else {
-        console.log(" Adresse postale acceptée");
-    }
+    } 
     //vérification pour la ville
     if (checkSpecialCharacter.test(ville) == true || checkNumber.test(ville) == true) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre ville. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
-    } else {
-        console.log("Ville acceptée");
-    }
+    } 
     //vérification pour l'e-mail
     if (checkMail.test(mail) == false) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre email. Les caractères spéciaux ne sont pas autorisés";
-    } else {
-        console.log("Adresse mail acceptée");
-    }
+    } 
 
     //Vérifier si les champs sont conformes
     if (checkMessage != "") {
@@ -210,11 +196,16 @@ myForm.addEventListener('submit', function (e) {
         }
 
         let products = [];
-        
+
         //on récupère les produits
-        for (let i = 0; i < myPeluche.length; i++) {
-            let tedID = myPeluche[i].id;
-            products.push(tedID)
+        if (Array.isArray(myPeluche) == false) {
+            let tedIDOne = myPeluche.id;
+            products.push(tedIDOne)
+        } else {
+            for (let i = 0; i < myPeluche.length; i++) {
+                let tedID = myPeluche[i].id;
+                products.push(tedID)
+            }
         }
 
         let toSend = { contact, products };

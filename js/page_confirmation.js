@@ -2,9 +2,7 @@ let order = JSON.parse(localStorage.getItem("order"));
 
 if (localStorage.length <= 0) {
     window.location = "./index.html";
-} else {
-    console.log("L'id de la commande = " + order.orderId)
-}
+} 
 
 //recherche des éléments dans la page HTML
 let mySection = document.getElementById("confirm");

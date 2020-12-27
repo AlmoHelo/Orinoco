@@ -1,5 +1,4 @@
 let idPage = document.location.search.substr(3);        //récupère l'id
-console.log(idPage)
 
 let myDiv = document.createElement("div");
 myDiv.className = "DivTed";
@@ -36,7 +35,6 @@ function getRequestPromise() {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
                     resolve(JSON.parse(this.responseText));
-                    console.log(JSON.parse(this.responseText))
                 } else {
                     reject(XMLHttpRequest);
                 }
@@ -104,9 +102,9 @@ getRequestPromise()
 
 
         let liste = document.querySelector("select");
-        
+
         myBouton.onclick = function () {
-           let tedProfil = {
+            let tedProfil = {
                 nom: response.name,
                 prix: thousands_separators(response.price),
                 couleur: liste.value,
@@ -114,20 +112,19 @@ getRequestPromise()
                 id: idPage,
                 quantite: 1
             };
-            
-            if(localStorage.getItem('Peluche')){
+
+            if (localStorage.getItem('Peluche')) {
                 let myTeddies = JSON.parse(localStorage.getItem('Peluche'))
-                if(typeof myTeddies === "object" && !Array.isArray(myTeddies)){
-                   const tab = [myTeddies,tedProfil]
-                    localStorage.setItem('Peluche',JSON.stringify(tab))
-                }else{
+                if (typeof myTeddies === "object" && !Array.isArray(myTeddies)) {
+                    const tab = [myTeddies, tedProfil]
+                    localStorage.setItem('Peluche', JSON.stringify(tab))
+                } else {
                     myTeddies.push(tedProfil)
-                    localStorage.setItem('Peluche',JSON.stringify(myTeddies))
+                    localStorage.setItem('Peluche', JSON.stringify(myTeddies))
                 }
-            }else{
-                localStorage.setItem('Peluche',JSON.stringify(tedProfil))
+            } else {
+                localStorage.setItem('Peluche', JSON.stringify(tedProfil))
             }
-            console.log("Contenu du local storage: " + localStorage.getItem('Peluche'))
 
             alert("Produit ajouter au panier !");
             return false;
@@ -136,6 +133,5 @@ getRequestPromise()
     .catch(function (e) {
         console.log(e);
     });
-console.log();
 
 
