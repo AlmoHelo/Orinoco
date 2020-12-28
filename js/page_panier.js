@@ -138,7 +138,6 @@ if (pel == null || pel == "[]") {
         }
         totalPrix.textContent = "Total : " + sommeTotal + " €";
     }
-
 }
 
 myForm.addEventListener('submit', function (e) {
@@ -217,7 +216,6 @@ myForm.addEventListener('submit', function (e) {
             .catch(function (e) {
                 console.log(e);
             });
-
     }
     if (localStorage.getItem("order") != null) {
         let order = JSON.parse(localStorage.getItem("order"));
@@ -240,7 +238,7 @@ function sendPost(url, toSend) {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status >= 200 && this.status <= 300) {
                     localStorage.setItem("order", this.responseText)
-                    window.location = "./page_confirmation.html"
+                    //window.location = "./page_confirmation.html"
                     resolve(JSON.parse(this.responseText));
                 } else {
                     reject('encore une erreur');
