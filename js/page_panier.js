@@ -238,7 +238,7 @@ function sendPost(url, toSend) {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status >= 200 && this.status <= 300) {
                     localStorage.setItem("order", this.responseText)
-                    //window.location = "./page_confirmation.html"
+                    window.location = "./page_confirmation.html"
                     resolve(JSON.parse(this.responseText));
                 } else {
                     reject('encore une erreur');

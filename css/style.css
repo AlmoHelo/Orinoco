@@ -10014,8 +10014,7 @@ button:hover {
 
   .imgArticle {
     width: 100%;
-    min-height: 200px;
-    max-height: 400px;
+    height: 280px;
   }
 
   .figcapArticle .descripArticle {
@@ -10049,6 +10048,7 @@ button:hover {
 
   .imgArticle {
     width: 100%;
+    height: 300px;
   }
 
   .figcapArticle .descripArticle {
