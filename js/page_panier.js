@@ -82,6 +82,11 @@ if (pel == null || pel == "[]") {
         myFigcap.appendChild(myQtePrix);
 
     } else {
+        let plein = document.createElement("h1");
+        plein.className = "h1prod"
+        plein.textContent = "Votre panier contient : ";
+        mySection.appendChild(plein)
+
         for (let m = 0; m < myPeluche.length; m++) {
             //structure par peluche
             let myArticle = document.createElement("div");
