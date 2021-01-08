@@ -125,8 +125,6 @@ getRequestPromise()
             } else {
                 localStorage.setItem('Peluche', JSON.stringify(tedProfil))
             }
-
-            alert("Produit ajouter au panier !");
             return false;
         }
     })

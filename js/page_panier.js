@@ -81,6 +81,11 @@ if (pel == null || pel == "[]") {
         myFigure.appendChild(myFigcap);
         myFigcap.appendChild(myQtePrix);
 
+        myCross.addEventListener("click", (event) => {
+            localStorage.removeItem("Peluche")
+            window.location.reload();
+        })
+
     } else {
         let plein = document.createElement("h1");
         plein.className = "h1prod"
@@ -169,19 +174,19 @@ myForm.addEventListener('submit', function (e) {
     //vérification pour le prénom
     if (checkNumber.test(prenom) == true || checkSpecialCharacter.test(prenom) == true) {
         checkMessage = "Veuillez vérifier les informations concernant votre prénom. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
-    } 
+    }
     //vérification pour l'adresse postale
     if (checkSpecialCharacter.test(adresse) == true) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre adresse postale. Les caractères spéciaux ne sont pas autorisés";
-    } 
+    }
     //vérification pour la ville
     if (checkSpecialCharacter.test(ville) == true || checkNumber.test(ville) == true) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre ville. Les caractères spéciaux ou les chiffres ne sont pas autorisés";
-    } 
+    }
     //vérification pour l'e-mail
     if (checkMail.test(mail) == false) {
         checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre email. Les caractères spéciaux ne sont pas autorisés";
-    } 
+    }
 
     //Vérifier si les champs sont conformes
     if (checkMessage != "") {

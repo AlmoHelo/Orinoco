@@ -32,9 +32,9 @@ getRequest()
             div.appendChild(img)
         }
         const insertName = (div, name) => {
-            let h1 = document.createElement("h1");
-            h1.innerHTML = name;
-            div.appendChild(h1);
+            let h2 = document.createElement("h2");
+            h2.innerHTML = name;
+            div.appendChild(h2);
         }
         const insertDescriptif = (div, description) => {
             let p = document.createElement("p");
